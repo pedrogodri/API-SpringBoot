@@ -1,13 +1,13 @@
-package br.com.projeto.api;
+package br.com.projeto.apispring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ApiApplication {
+public class ApiSpringApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ApiApplication.class, args);
+		SpringApplication.run(ApiSpringApplication.class, args);
 	}
 
 }

@@ -1,10 +1,10 @@
-package br.com.projeto.api;
+package br.com.projeto.apispring;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ApiApplicationTests {
+class ApiSpringApplicationTests {
 
 	@Test
 	void contextLoads() {
