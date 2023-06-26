@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.service.annotation.PutExchange;
 
 import br.com.projeto.apispring.model.Pessoa;
 import br.com.projeto.apispring.repository.Repositorio;
@@ -47,23 +46,18 @@ public class Controle {
         acao.delete(p);
     }
 
-    @GetMapping("")
-    public String mensagem() {
-        return "Hello World";
+    @GetMapping("/api/contador")
+    public Long contador() {
+        return acao.count();
+    } 
+
+    @GetMapping("/api/odernarNomes")
+    public List<Pessoa> ordenarNomes() {
+        return acao.findByOrderByNome();
     }
 
-    @GetMapping("/boasVindas")
-    public String boasVindas() {
-        return "Seja bem vindo(a)";
-    }
-
-    @GetMapping("/boasVindas/{nome}")
-    public String boasVindas(@PathVariable String nome) {
-        return "Seja bem vindo(a) " + nome;
-    }
-
-    @PostMapping("/pessoa")
-    public Pessoa pessoa(@RequestBody Pessoa p) {
-        return p;
+    @GetMapping("/api/ordenarNomesIdade/{nome}")
+    public List<Pessoa> ordenarNomesByIdade(@PathVariable String nome) {
+        return acao.findByNomeOrderByIdade(nome);
     }
 }
