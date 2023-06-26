@@ -60,4 +60,9 @@ public class Controle {
     public List<Pessoa> ordenarNomesByIdade(@PathVariable String nome) {
         return acao.findByNomeOrderByIdade(nome);
     }
+
+    @GetMapping("/api/nomeContem/{termo}")
+    public List<Pessoa> nomeContem(@PathVariable String termo) {
+        return acao.findByNomeContaining(termo);
+    }
 }
