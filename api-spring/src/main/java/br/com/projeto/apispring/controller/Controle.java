@@ -3,6 +3,8 @@ package br.com.projeto.apispring.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -64,5 +66,30 @@ public class Controle {
     @GetMapping("/api/nomeContem/{termo}")
     public List<Pessoa> nomeContem(@PathVariable String termo) {
         return acao.findByNomeContaining(termo);
+    }
+
+    @GetMapping("/api/iniciaNome/{termo}")
+    public List<Pessoa> iniciaNome(@PathVariable String termo) {
+        return acao.findByNomeStartsWith(termo);
+    }
+
+    @GetMapping("/api/finalizaNome/{termo}")
+    public List<Pessoa> finalizaNome(@PathVariable String termo) {
+        return acao.findByNomeEndsWith(termo);
+    }
+
+    @GetMapping("/api/somaIdades")
+    public Integer somaIdades() {
+        return acao.somaIdades();
+    }
+
+    @GetMapping("/api/idadeMaiorIgual/{idade}")
+    public List<Pessoa> idadeMaiorIgual(@PathVariable Integer idade) {
+        return acao.idadeMaiorIgual(idade);
+    }
+
+    @GetMapping("/status")
+    public ResponseEntity<?> status() {
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);    
     }
 }
