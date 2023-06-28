@@ -47,9 +47,8 @@ public class Controle {
     }
 
     @DeleteMapping("/api/{codigo}")
-    public void remover(@PathVariable Integer codigo) {
-        //Pessoa p = selecionarCodigo(codigo);
-        //acao.delete(p);
+    public ResponseEntity<?> remover(@PathVariable Integer codigo) {
+        return servico.remover(codigo);
     }
 
     @GetMapping("/api/contador")
