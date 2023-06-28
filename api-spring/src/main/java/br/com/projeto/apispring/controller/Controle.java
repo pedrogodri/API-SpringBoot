@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.projeto.apispring.model.Pessoa;
 import br.com.projeto.apispring.repository.Repositorio;
+import br.com.projeto.apispring.service.Servico;
 
 @RestController
 public class Controle {
@@ -22,14 +23,17 @@ public class Controle {
     @Autowired
     private Repositorio acao;
 
+    @Autowired
+    private Servico servico;
+
     @PostMapping("/api")
-    public Pessoa cadastrar(@RequestBody Pessoa p) {
-        return acao.save(p);
+    public ResponseEntity<?> cadastrar(@RequestBody Pessoa p) {
+        return servico.cadastrar(p);
     }
 
     @GetMapping("/api")
-    public List<Pessoa> selecionar() {
-        return acao.findAll();
+    public ResponseEntity<?> selecionar() {
+        return servico.selecionar();
     }
 
     @GetMapping("/api/{codigo}")
